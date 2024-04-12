@@ -7,7 +7,7 @@ export default function Home({ }) {
     <div className="page">
       {/* <ReviewsList /> */}
       <Cart />
-      {/* <ProductsList /> */}
+      <ProductsList />
     </div>
   );
 }

@@ -12,3 +12,8 @@ export interface IFetchedProduct {
   total: number;
   products: IProduct[]
 }
+
+export interface ICartProduct {
+  product: IProduct;
+  quantity: number;
+}

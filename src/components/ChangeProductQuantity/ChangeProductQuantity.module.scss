@@ -1,0 +1,27 @@
+.quantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  margin-top: 20px;
+
+  .quantityUp,
+  .quantityDown {
+    background-color: #222222;
+    width: 30%;
+    height: 60px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 24px;
+  }
+
+  .quantityInput {
+    background-color: #222222;
+    height: 60px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+  }
+
+}

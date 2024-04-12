@@ -1,37 +1,50 @@
-'use client'
+'use client';
 
 import styles from './ChangeProductQuantity.module.scss';
-import { useCallback, useState } from "react"
+import { useDispatch } from 'react-redux';
+import { useCallback, useState } from 'react';
+import { IProduct } from '@/interfaces/products';
+import { addProduct } from '@/app/redux/slices/productSlice';
 
-export default function ChangeProductQuantity() {
+interface Props {
+  data: IProduct;
+}
 
+export default function ChangeProductQuantity({ data }: Props) {
+  const dispatch = useDispatch();
   const [value, setValue] = useState(1);
 
   const handleUp = () => {
     setValue((prev) => prev + 1);
-  }
+    dispatch(addProduct(data));
+  };
 
   const handleDown = () => {
-    setValue((prev) => {
-      if (prev === 1) return prev = 1;
-      return prev - 1;
-    })
-  }
+    if (value > 1) {
+      setValue((prev) => prev - 1);
+      // Здесь вы можете реализовать удаление товара из корзины или уменьшение его количества
+      // Но эта часть зависит от вашей логики и структуры данных в Redux
+    }
+  };
 
   const handleChangeValue = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(+e.target.value)
-  }, [value]);
+    setValue(+e.target.value);
+  }, []);
 
   return (
     <div className={styles.quantity}>
-      <button onClick={handleUp} className={styles.quantityUp}>+</button>
+      <button onClick={handleUp} className={styles.quantityUp}>
+        +
+      </button>
       <input
         type="number"
         value={value}
         className={styles.quantityInput}
         onInput={handleChangeValue}
       />
-      <button onClick={handleDown} className={styles.quantityDown}>-</button>
+      <button onClick={handleDown} className={styles.quantityDown}>
+        -
+      </button>
     </div>
-  )
+  );
 }
