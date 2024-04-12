@@ -7,7 +7,6 @@ import { IReview } from '@/interfaces/reviews';
 export default async function Home() {
 
   const reviews: IReview[] = await fetchReviews();
-  console.log(reviews);
 
   return (
     <section className={styles.reviews}>
