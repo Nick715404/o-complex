@@ -1,14 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '*',
-        port: '',
-        pathname: 'shopping?q=tbn:**',
-      },
-    ],
+    domains: ['encrypted-tbn2.gstatic.com', 'encrypted-tbn0.gstatic.com', 'encrypted-tbn3.gstatic.com']
   },
   reactStrictMode: false
 };

@@ -13,6 +13,8 @@ export default function PhoneForm() {
     console.log(JSON.stringify(data.phone));
   };
 
+  console.log(errors);
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <InputMask

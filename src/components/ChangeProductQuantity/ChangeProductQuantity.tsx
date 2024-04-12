@@ -4,15 +4,22 @@ import styles from './ChangeProductQuantity.module.scss';
 import { useDispatch } from 'react-redux';
 import { useCallback, useState } from 'react';
 import { IProduct } from '@/interfaces/products';
-import { addProduct } from '@/app/redux/slices/productSlice';
+import { addProduct, removeProduct } from '@/app/redux/slices/productSlice';
 
 interface Props {
   data: IProduct;
+
 }
 
 export default function ChangeProductQuantity({ data }: Props) {
   const dispatch = useDispatch();
   const [value, setValue] = useState(1);
+  const [status, setStatus] = useState<boolean>(false);
+
+  const handleClick = () => {
+    setStatus(true);
+    dispatch(addProduct(data));
+  }
 
   const handleUp = () => {
     setValue((prev) => prev + 1);
@@ -20,11 +27,9 @@ export default function ChangeProductQuantity({ data }: Props) {
   };
 
   const handleDown = () => {
-    if (value > 1) {
-      setValue((prev) => prev - 1);
-      // Здесь вы можете реализовать удаление товара из корзины или уменьшение его количества
-      // Но эта часть зависит от вашей логики и структуры данных в Redux
-    }
+    if (value > 1) setValue((prev) => prev - 1);
+    if (value === 1) setStatus(false);
+    dispatch(removeProduct(data));
   };
 
   const handleChangeValue = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,19 +37,26 @@ export default function ChangeProductQuantity({ data }: Props) {
   }, []);
 
   return (
-    <div className={styles.quantity}>
-      <button onClick={handleUp} className={styles.quantityUp}>
-        +
-      </button>
-      <input
-        type="number"
-        value={value}
-        className={styles.quantityInput}
-        onInput={handleChangeValue}
-      />
-      <button onClick={handleDown} className={styles.quantityDown}>
-        -
-      </button>
-    </div>
+    <>
+      {status ?
+        <div className={styles.quantity}>
+          <button onClick={handleUp} className={styles.quantityUp}>
+            +
+          </button>
+          <input
+            type="number"
+            value={value}
+            className={styles.quantityInput}
+            onInput={handleChangeValue}
+          />
+          <button onClick={handleDown} className={styles.quantityDown}>
+            -
+          </button>
+        </div> :
+        <button onClick={handleClick} className={styles.productBtn}>
+          купить
+        </button>
+      }
+    </>
   );
 }

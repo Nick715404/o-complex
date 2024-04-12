@@ -2,7 +2,10 @@ export const fetchReviews = async () => {
   try {
     const response = await fetch('http://o-complex.com:1337/reviews', {
       method: 'GET',
-      headers: { "Content-Type": "application/json" }
+      headers: { "Content-Type": "application/json" },
+      next: {
+        revalidate: 480
+      }
     });
 
     if (!response.ok) return new Error('Error while fetching reviews');
