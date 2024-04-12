@@ -1,11 +1,9 @@
-import styles from './page.module.css';
-
-import Reviews from "@/components/Reviews/Reviews";
+import ReviewsList from "@/components/ReviewsList/ReviewsList";
 
 export default function Home() {
   return (
     <>
-      <Reviews />
+      <ReviewsList />
     </>
   );
 }
