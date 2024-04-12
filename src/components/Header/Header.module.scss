@@ -1,0 +1,23 @@
+.header {
+  margin-top: 55px;
+
+  @media (max-width: 500px) {
+    margin-top: 10px;
+  }
+
+  .headerWrapper {
+    background-color: #777777;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    padding-bottom: 12px;
+
+    .headerTitle {
+      font-size: clamp(40px, 5.6vw, 96px);
+      text-transform: lowercase;
+      text-align: center;
+    }
+
+  }
+}
