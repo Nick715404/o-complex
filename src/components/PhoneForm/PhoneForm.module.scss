@@ -82,3 +82,17 @@
   background-color: #d5cfcf;
   padding: 20px;
 }
+
+.disabled {
+  height: 60px;
+  background-color: #222222;
+  border-radius: 15px;
+  font-size: clamp(16px, 4vw, 22px);
+  color: #fff;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all .2s ease;
+  cursor: not-allowed !important;
+  opacity: 0.7;
+  pointer-events: none;
+}

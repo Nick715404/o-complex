@@ -18,11 +18,9 @@ import { FieldValues, useForm } from 'react-hook-form';
 
 export default function PhoneForm() {
   const cachedData = useSelector((state: RootState) => state.products.productsInCart);
-
   const { register, formState: { errors }, handleSubmit, } = useForm({ mode: "onBlur" });
 
   const [status, setStatus] = useState<IResponse>({ success: null, error: '' });
-  const [value, setValue] = useState<string>('');
 
   const onSubmit = async (data: FieldValues) => {
     const cleanPhoneNumber = data.phone.replace(/\D/g, "");
@@ -68,12 +66,13 @@ export default function PhoneForm() {
           {...register('phone', validation)}
         />
         <button
-          className={styles.submit}
+          className={cachedData.length ? `${styles.submit}` : `${styles.disabled}`}
           type="submit"
+          disabled={cachedData.length ? true : false}
         >
           Купить
         </button>
-      </form>
+      </form >
       <Modal status={status.success === 1} />
     </>
   );
