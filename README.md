@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Отчет о тестовом задании
 
-## Getting Started
+## Что сделано:
 
-First, run the development server:
+1) Визуал по фигме - добавил несколько своих решений ("проявлении инициативы по улучшению ux на месте. например добавить прилоадеры пока грузится контент")
+2) Дизайн адаптирован под мобильные устройства и планшеты
+3) Наполнение контентом отзывов из html обернутого в json
+4) Наполнение контентом товары по апи:
+   а) показывать первую страницу сразу
+5) При нажатии на кнопку "купить", меняется кнопка "купить" на кнопки + и - и поле для ввода кол-ва товара, значение поля 1, кнопки добавляют/отбавляют товар, так же есть возможность вписать в поле для ввода любое кол-во.
+6) При изменении кол-ва какого-либо из товаров должна меняться информация в корзине (та что над полем с телефоном)
+7) Набранные товары сохраняется при перезагрузки страницы
+8) Маска в поле для телефона
+9) При нажатии кнопки "заказать" идет проверка того что телефон полностью введен
+    а) Если всё хорошо - отправлять запрос на сервер
+    б) Если есть ошибки - подсветить соответствующие поля красным (поле номера телефона)
+10) После отправки запроса и получения ответа от сервера отображается попап что всё успешно
+11) Использование SSR
+12) Вроде как читабельность/поддерживаемость/расширяемость кода)))
+13) Сделал Preloader - чтобы увидеть прелоадер, выключите кэш в devtools'ах -> Network -> Disable Cache. Перезагрузите несколько раз страницу (в проекте - Skeleton).
+14) Добавил свайпер для отзывов
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Что не удалось сделать:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1) Не удалось сделать пагинацию товаров
+2) Не удалось уменьшать цену при уменьшении кол-ва товара через input
+3) Не удалось сохранять товары после перезагрузки
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Чтобы запустить:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1) Склонируйте себе проект
+2) Откройте в редакторе кода
+3) В терминал в папке проекта введите 'yarn dev' или 'npx run dev'
+4) В терминале будет указана ссылка на локальный сервер (http://Localhost:PORT)
+5) Получайте наслаждение :)
