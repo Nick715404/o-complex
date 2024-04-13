@@ -18,31 +18,30 @@ export const productsSlice = createSlice({
   initialState,
   reducers: {
     addProduct(state, action) {
-      state.productCount += 1;
-      const index = state.productsInCart.findIndex(
+      const existingProductIndex = state.productsInCart.findIndex(
         (item) => item.product.id === action.payload.id
       );
-      if (index !== -1) {
-        state.productsInCart[index].quantity += 1;
-        if (state.productsInCart[index].quantity > 1) {
-          state.productsInCart[index].price += action.payload.price;
-        }
+      if (existingProductIndex !== -1) {
+        console.log(action.payload.quantity);
+
+        state.productsInCart[existingProductIndex].quantity = action.payload.quantity;
+        state.productsInCart[existingProductIndex].price += action.payload.price;
       } else {
         state.productsInCart.push({ product: action.payload, quantity: 1, price: action.payload.price });
       }
+      state.productCount += 1;
     },
     removeProduct(state, action) {
-      const index = state.productsInCart.findIndex(
+      const existingProductIndex = state.productsInCart.findIndex(
         (item) => item.product.id === action.payload.id
       );
-      if (index !== -1) {
-        state.productCount -= 1;
-        state.productsInCart[index].quantity -= 1;
-        if (state.productsInCart[index].quantity === 0) {
-          state.productsInCart.splice(index, 1);
-        } else {
-          state.productsInCart[index].price -= action.payload.price;
+      if (existingProductIndex !== -1) {
+        state.productsInCart[existingProductIndex].quantity -= 1;
+        state.productsInCart[existingProductIndex].price -= action.payload.price;
+        if (state.productsInCart[existingProductIndex].quantity === 0) {
+          state.productsInCart.splice(existingProductIndex, 1);
         }
+        state.productCount -= 1;
       }
     },
   },

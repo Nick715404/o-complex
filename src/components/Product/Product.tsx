@@ -1,5 +1,3 @@
-'use client'
-
 import styles from './Product.module.scss';
 
 import { IProduct } from "@/interfaces/products"
