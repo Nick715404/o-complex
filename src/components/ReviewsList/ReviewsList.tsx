@@ -3,6 +3,7 @@ import styles from './Reviews.module.scss';
 import Review from '../Review/Review';
 import { fetchReviews } from '@/api/reviews/reviews';
 import { IReview } from '@/interfaces/reviews';
+import SwiperCustom from '../Swiper/Swiper';
 
 export default async function Home() {
 
@@ -12,9 +13,7 @@ export default async function Home() {
     <section className={styles.reviews}>
       <div className="container">
         <div className={styles.reviewsWrapper}>
-          {reviews && reviews.map((review: IReview, index: number) => (
-            <Review key={index} data={review} />
-          ))}
+          <SwiperCustom data={reviews} />
         </div>
       </div>
     </section>

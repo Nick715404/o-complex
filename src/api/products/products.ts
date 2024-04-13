@@ -35,9 +35,6 @@ export const postProduct = async (formData: ICartOrder) => {
       "success": 1,
       "error": ''
     }
-
-    console.log(success);
-  
     return success;
   }
   catch (error: any) {

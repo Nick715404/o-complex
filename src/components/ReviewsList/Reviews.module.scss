@@ -4,16 +4,9 @@
   .reviewsWrapper {
     display: flex;
     align-items: center;
-    max-width: 70%;
+    // max-width: 70%;
     width: 100%;
     margin: 0 auto;
     gap: 20px;
-
-    @media (max-width: 768px) {
-      flex-direction: column;
-      max-width: unset;
-
-    }
-
   }
 }

@@ -1,17 +1,12 @@
 .review {
-  background-color: #D9D9D9;
-  max-width: 50%;
   width: 100%;
   min-height: 320px;
   padding: 4%;
   border-radius: 20px;
   color: #000;
-  aspect-ratio: 1 / 1;
+  background-color: #D9D9D9;
 
   @media (max-width: 768px) {
-    max-width: unset;
-    min-height: 220px;
-    aspect-ratio: unset;
     padding: 20px;
     border-radius: 10px;
   }

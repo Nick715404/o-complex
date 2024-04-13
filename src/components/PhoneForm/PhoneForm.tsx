@@ -7,11 +7,13 @@ import { validation } from '@/constants/form';
 import { RootState } from '@/app/redux/store';
 import { postProduct } from '@/api/products/products';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import React, { useState } from 'react';
 import InputMask from 'react-input-mask';
 import { FieldValues, useForm } from 'react-hook-form';
 import Modal from '../Modal/Modal';
+import { handleResponse } from '@/utils/form';
+import { savePhone } from '@/app/redux/slices/productSlice';
 
 interface IResponse {
   success: null | number,
@@ -19,47 +21,27 @@ interface IResponse {
 }
 
 export default function PhoneForm() {
+  const dispatch = useDispatch();
   const cachedData = useSelector((state: RootState) => state.products.productsInCart);
-  const [status, setStatus] = useState<IResponse>({
-    success: null,
-    error: ''
-  });
+
   const { register, formState: { errors }, handleSubmit, } = useForm({ mode: "onBlur" });
+
+  const [status, setStatus] = useState<IResponse>({ success: null, error: '' });
+  const [value, setValue] = useState<string>('');
 
   const onSubmit = async (data: FieldValues) => {
     const cleanPhoneNumber = data.phone.replace(/\D/g, "");
-    const cart = cachedData.map(item => ({
-      id: item.product.id,
-      quantity: item.quantity
-    }));
 
     const formData = {
       phone: cleanPhoneNumber,
-      cart: cart
+      cart: cachedData.map(item => ({
+        id: item.product.id,
+        quantity: item.quantity
+      }))
     }
 
     const response = await postProduct(formData);
-
-    if (response) {
-      setStatus(response);
-      localStorage.clear();
-
-      if (response.success === 1) {
-        setTimeout(() => {
-          setStatus({ success: null, error: '' });
-        }, 3000);
-        setTimeout(() => {
-          window.location.reload();
-        }, 1800);
-      }
-
-      if (response.success === 0) {
-        setTimeout(() => {
-          window.location.reload();
-        }, 1000);
-      }
-
-    }
+    handleResponse(response, setStatus);
   };
 
   if (status.success === 0) {

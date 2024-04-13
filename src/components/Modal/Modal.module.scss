@@ -6,6 +6,16 @@
   padding: 40px;
   border-radius: 15px;
   transition: all .8s ease-in-out;
+
+  @media (max-width: 500px) {
+    left: 20px;
+  }
+
+  .title {
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
 }
 
 .active {

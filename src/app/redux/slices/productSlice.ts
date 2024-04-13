@@ -6,11 +6,13 @@ import { IProduct } from '@/interfaces/products';
 export interface IProductSlice {
   productCount: number;
   productsInCart: { product: IProduct; quantity: number, price: number }[];
+  phone: string;
 }
 
 const initialState: IProductSlice = {
   productCount: 0,
   productsInCart: [],
+  phone: ''
 };
 
 export const productsSlice = createSlice({
@@ -44,8 +46,11 @@ export const productsSlice = createSlice({
         state.productCount -= 1;
       }
     },
+    savePhone (state, action) {
+      state.phone = action.payload;
+    }
   },
 });
 
-export const { addProduct, removeProduct } = productsSlice.actions;
+export const { addProduct, removeProduct, savePhone } = productsSlice.actions;
 export default productsSlice.reducer;
