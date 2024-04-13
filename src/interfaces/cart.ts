@@ -7,3 +7,8 @@ export interface ICartOrder {
   phone: string;
   cart: ICart[];
 }
+
+export interface IResponse {
+  success: null | number,
+  error: string
+}

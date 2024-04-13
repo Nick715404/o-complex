@@ -3,6 +3,7 @@ import styles from './ProductList.module.scss';
 import { fetchProducts } from "@/api/products/products"
 import { IProduct } from "@/interfaces/products";
 import Product from "../Product/Product";
+import Skeleton from '../Skeleton/Skeleton';
 
 export default async function ProductsList() {
 

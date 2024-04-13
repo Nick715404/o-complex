@@ -5,7 +5,7 @@ export const fetchProducts = async (page: number) => {
   try {
     const response = await fetch(`http://o-complex.com:1337/products?page=${page}&page_size=${page_size}`, {
       next: {
-        revalidate: 240,
+        revalidate: 60,
       }
     });
     if (!response.ok) {

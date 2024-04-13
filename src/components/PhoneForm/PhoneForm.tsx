@@ -6,22 +6,17 @@ import { validation } from '@/constants/form';
 
 import { RootState } from '@/app/redux/store';
 import { postProduct } from '@/api/products/products';
+import { handleResponse } from '@/utils/form';
+import { IResponse } from '@/interfaces/cart';
 
-import { useDispatch, useSelector } from 'react-redux';
+import Modal from '../Modal/Modal';
+
+import { useSelector } from 'react-redux';
 import React, { useState } from 'react';
 import InputMask from 'react-input-mask';
 import { FieldValues, useForm } from 'react-hook-form';
-import Modal from '../Modal/Modal';
-import { handleResponse } from '@/utils/form';
-import { savePhone } from '@/app/redux/slices/productSlice';
-
-interface IResponse {
-  success: null | number,
-  error: string
-}
 
 export default function PhoneForm() {
-  const dispatch = useDispatch();
   const cachedData = useSelector((state: RootState) => state.products.productsInCart);
 
   const { register, formState: { errors }, handleSubmit, } = useForm({ mode: "onBlur" });
