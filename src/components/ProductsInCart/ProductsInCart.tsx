@@ -13,10 +13,9 @@ export default function ProductsInCart() {
     <div className={styles.productsInCart}>
       <h2 className={styles.productsInCartTitle}>Добавленные товары</h2>
       <div className={styles.productsInCartWrapper}>
-
         {products.length ? products.map(item => (
           <CartProduct key={item.product.id} data={item} />
-        )) : <span style={{margin: '20px 0', display: 'block'}}>Здесь будут ваши товары!</span>}
+        )) : <span style={{ margin: '20px 0', display: 'block' }}>Здесь будут ваши товары!</span>}
       </div>
     </div>
   )

@@ -1,13 +1,21 @@
 .cart {
 
+  margin-top: 80px;
 
   .cartWrapper {
     background-color: #D9D9D9;
     border-radius: 15px;
     padding: 20px;
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 30px;
+
+    @media (max-width: 768px) {
+      flex-direction: column-reverse;
+      gap: 50px;
+    }
+
   }
 
 }

@@ -21,6 +21,7 @@ export default function CartProduct({ data }: Props) {
             alt={product.title}
             width={120}
             height={120}
+            className={styles.img}
           />
         </div>
         <div className={styles.productTitle}>

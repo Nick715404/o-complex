@@ -1,0 +1,17 @@
+.modal {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #34783e;
+  padding: 40px;
+  border-radius: 15px;
+  transition: all .8s ease-in-out;
+}
+
+.active {
+  transform: translateY(0%);
+}
+
+.closed {
+  transform: translateY(150%);
+}

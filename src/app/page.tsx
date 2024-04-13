@@ -5,7 +5,7 @@ import ReviewsList from "@/components/ReviewsList/ReviewsList";
 export default function Home({ }) {
   return (
     <div className="page">
-      {/* <ReviewsList /> */}
+      <ReviewsList />
       <Cart />
       <ProductsList />
     </div>

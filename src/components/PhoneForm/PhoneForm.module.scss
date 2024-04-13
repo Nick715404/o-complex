@@ -1,0 +1,84 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+
+  @media (max-width: 768px) {
+    max-width: unset;
+  }
+
+  .errors {
+    color: #af1f1f;
+    margin: 10px 0 20px 10px;
+    text-align: center;
+  }
+
+  .submit {
+    height: 60px;
+    background-color: #222222;
+    border-radius: 15px;
+    font-size: clamp(16px, 4vw, 22px);
+    color: #fff;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all .2s ease;
+
+    &:hover {
+      background-color: transparent;
+      border-color: #222222;
+      color: #222222;
+    }
+
+  }
+
+  .title {
+    color: #222222;
+    font-size: clamp(22px, 3.7vw, 28px);
+    text-align: center;
+  }
+
+  .input {
+    padding: 10px;
+    width: 100%;
+    height: 60px;
+    font-size: clamp(18px, 5.5vw, 30px);
+    background-color: #222222;
+    border-radius: 20px;
+    color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+
+    &::placeholder {
+      color: #b5afaf;
+      font-size: clamp(18px, 4vw, 26px);
+    }
+  }
+}
+
+.inputError {
+  border: 3px solid #af1f1f;
+}
+
+.errorStatus {
+  color: #af1f1f;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+
+.successStatus {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 450px;
+  aspect-ratio: 1.3 / 1;
+  transform: translate(-50%, -50%);
+  border-radius: 15px;
+  color: #23805c;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background-color: #d5cfcf;
+  padding: 20px;
+}
