@@ -3,7 +3,6 @@
   align-items: center;
   justify-content: space-between;
   gap: 4px;
-  margin-top: 20px;
 
   .quantityUp,
   .quantityDown {
@@ -14,6 +13,11 @@
     color: #fff;
     font-size: 24px;
     cursor: pointer;
+
+    @media (max-width: 500px) {
+      min-width: 60px;
+    }
+
   }
 
   .quantityInput {
@@ -23,6 +27,10 @@
     color: #fff;
     font-size: 20px;
     text-align: center;
+
+    @media (max-width: 500px) {
+      width: 60%;
+    }
   }
 
 }

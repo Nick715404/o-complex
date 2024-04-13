@@ -11,12 +11,11 @@
     align-items: center;
     justify-content: center;
     border-radius: 15px;
-    padding-bottom: 12px;
+    padding: 0 12px 12px 12px;
 
     .headerTitle {
       font-size: clamp(40px, 5.6vw, 96px);
       text-transform: lowercase;
-      text-align: center;
     }
 
   }

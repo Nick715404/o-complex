@@ -1,3 +1,5 @@
+import { ICartProduct } from "@/interfaces/products";
+
 interface IResponse {
   success: null | number,
   error: string
@@ -24,4 +26,16 @@ export const handleResponse = (response: IResponse, setStatus: any) => {
     }
 
   }
-}
+};
+
+export const handleFormData = (phone: string, data: ICartProduct[]) => {
+  const cleanPhoneNumber = phone.replace(/\D/g, "");
+
+  return {
+    phone: cleanPhoneNumber,
+    cart: data.map(item => ({
+      id: item.product.id,
+      quantity: item.quantity
+    }))
+  }
+};

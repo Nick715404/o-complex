@@ -6,7 +6,7 @@ import { validation } from '@/constants/form';
 
 import { RootState } from '@/app/redux/store';
 import { postProduct } from '@/api/products/products';
-import { handleResponse } from '@/utils/form';
+import { handleFormData, handleResponse } from '@/utils/form';
 import { IResponse } from '@/interfaces/cart';
 
 import Modal from '../Modal/Modal';
@@ -19,20 +19,10 @@ import { FieldValues, useForm } from 'react-hook-form';
 export default function PhoneForm() {
   const cachedData = useSelector((state: RootState) => state.products.productsInCart);
   const { register, formState: { errors }, handleSubmit, } = useForm({ mode: "onBlur" });
-
   const [status, setStatus] = useState<IResponse>({ success: null, error: '' });
 
   const onSubmit = async (data: FieldValues) => {
-    const cleanPhoneNumber = data.phone.replace(/\D/g, "");
-
-    const formData = {
-      phone: cleanPhoneNumber,
-      cart: cachedData.map(item => ({
-        id: item.product.id,
-        quantity: item.quantity
-      }))
-    }
-
+    const formData = handleFormData(data.phone, cachedData);
     const response = await postProduct(formData);
     handleResponse(response, setStatus);
   };
@@ -68,7 +58,6 @@ export default function PhoneForm() {
         <button
           className={cachedData.length ? `${styles.submit}` : `${styles.disabled}`}
           type="submit"
-          disabled={cachedData.length ? true : false}
         >
           Купить
         </button>

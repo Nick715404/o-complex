@@ -6,6 +6,7 @@ import Review from '../Review/Review';
 import { IReview } from '@/interfaces/reviews';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
 
 import 'swiper/css';
 
@@ -33,6 +34,11 @@ export default function SwiperCustom({ data }: Props) {
           slidesPerView: 3
         }
       }}
+      autoplay={{
+        delay: 2300,
+        disableOnInteraction: false,
+      }}
+      modules={[Autoplay]}
     >
       {
         data.map((item: IReview, index: number) => (

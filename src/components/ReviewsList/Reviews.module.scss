@@ -1,6 +1,10 @@
 .reviews {
   margin-top: 105px;
 
+  @media (max-width: 500px) {
+    margin-top: 30px;
+  }
+
   .reviewsWrapper {
     display: flex;
     align-items: center;

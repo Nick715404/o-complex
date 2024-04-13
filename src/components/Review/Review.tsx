@@ -6,10 +6,8 @@ interface Props {
   data: IReview
 }
 
-const Review = ({ data }: Props) => {
+export default function Review({ data }: Props) {
   return (
     <div className={styles.review} dangerouslySetInnerHTML={{ __html: data.text }} />
   );
-}
-
-export default Review;
+};
